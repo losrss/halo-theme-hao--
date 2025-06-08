@@ -35,12 +35,13 @@
 
     <div th:if="${theme.config.nav.right.navLogin}" class="console-button" tabindex="-1"
          th:with="currentUser = ${contributorFinder.getContributor(#authentication.name)}">
-        <span class="site-page nav-login">
+      <!--  <span class="site-page nav-login">
             <i sec:authorize="isAnonymous()" class="haofont hao-icon-zhanghao1 " style="font-size: 19.5px;"></i>
             <img sec:authorize="isAuthenticated()"  th:src="${currentUser.avatar}"
                  th:alt="${currentUser.displayName}"
                  style=" width: 24px; height: 24px; border-radius: 9999px" />
         </span>
+        -->
         <div class="back-menu-list-groups">
             <div class="back-menu-list-group" style="margin: -4px -9px -4px -18px">
                 <div class="back-menu-list">
