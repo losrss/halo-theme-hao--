@@ -35,7 +35,22 @@
 
     <div th:if="${theme.config.nav.right.navLogin}" class="console-button" tabindex="-1"
          th:with="currentUser = ${contributorFinder.getContributor(#authentication.name)}">
-      <!--  <span class="site-page nav-login">
+    <span class="site-page nav-login">
+    <!-- 未登录用户显示账号图标 -->
+    <i sec:authorize="isAnonymous()" class="haofont hao-icon-zhanghao1" style="font-size: 19.5px;"></i>
+    <!-- 已登录用户且没头像时也显示账号图标，有头像时显示头像 -->
+    <span sec:authorize="isAuthenticated()">
+        <th:block th:if="${#strings.isEmpty(currentUser.avatar)}">
+            <i class="haofont hao-icon-zhanghao1" style="font-size: 19.5px;"></i>
+        </th:block>
+        <th:block th:unless="${#strings.isEmpty(currentUser.avatar)}">
+            <img th:src="${currentUser.avatar}"
+                 th:alt="${currentUser.displayName}"
+                 style="width: 24px; height: 24px; border-radius: 9999px" />
+        </th:block>
+    </span>
+</span>
+        <!-- 这段代码作废 <span class="site-page nav-login">
             <i sec:authorize="isAnonymous()" class="haofont hao-icon-zhanghao1 " style="font-size: 19.5px;"></i>
             <img sec:authorize="isAuthenticated()"  th:src="${currentUser.avatar}"
                  th:alt="${currentUser.displayName}"
